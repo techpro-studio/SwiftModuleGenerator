@@ -21,7 +21,7 @@ func main() {
 		log.Fatalf("Unable to create a directory %s", err.Error())
 	}
 
-	mainImport := "import SwiftUI \n\n\n"
+	mainImport := "import SwiftUI \n\n"
 
 	factoryData := mainImport + fmt.Sprintf(
 		    "protocol %sViewFactory { \n" +
