@@ -21,12 +21,12 @@ func main() {
 		log.Fatalf("Unable to create a directory %s", err.Error())
 	}
 
-	mainImport := "import SwiftUI \n\n\n\n\n"
+	mainImport := "import SwiftUI \n\n\n"
 
 	factoryData := mainImport + fmt.Sprintf(
 		    "protocol %sViewFactory { \n" +
 			"    func make() -> AnyView \n" +
-			"} \n\n\n\n\n" +
+			"} \n\n" +
 
 
 			"class Default%sViewFactory: %sViewFactory { \n" +
@@ -34,7 +34,7 @@ func main() {
 			"        let viewModel = %sViewModel()\n" +
 			"        return AnyView(%sView(viewModel: viewModel))\n" +
 			"     }\n" +
-			"}\n\n\n\n\n" +
+			"}\n" +
 
 			"", moduleName, moduleName, moduleName, moduleName, moduleName)
 
