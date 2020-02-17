@@ -29,7 +29,7 @@ func main() {
 			"} \n\n" +
 
 
-			"class Default%sViewFactory: %sViewFactory { \n" +
+			"struct Default%sViewFactory: %sViewFactory { \n" +
 			"    func make() -> AnyView { \n" +
 			"        let viewModel = %sViewModel()\n" +
 			"        return AnyView(%sView(viewModel: viewModel))\n" +
