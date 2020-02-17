@@ -44,10 +44,14 @@ func main() {
 		"struct %sView: View { \n\n"+
 			    "    @ObservedObject var viewModel: %sViewModel\n\n" +
 			    "    var body: some View {\n" +
-				"        Text(\"%s\")\n" +
+				"        Text(\"%s\").frame(maxWidth: .infinity, maxHeight: .infinity)\n" +
 			    "    }\n" +
-			    "}\n" +
-			"", moduleName, moduleName, moduleName)
+			    "}\n\n" +
+				"struct %sView_Previews: PreviewProvider {\n" +
+				"    static var previews: some View {\n\n" +
+				"	 }\n" +
+				"}" +
+				"", moduleName, moduleName, moduleName, moduleName)
 
 	writeFile(moduleName, "View", viewData)
 
