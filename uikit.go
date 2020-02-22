@@ -2,22 +2,40 @@ package main
 
 import "fmt"
 
-func uiKitGen(moduleName string) {
-	genRoutes(moduleName)
+func genUIKitModule(moduleName string) {
+	genUIKitRoutes(moduleName)
+	genUIKitFactory(moduleName)
 }
 
-func genRoutes(moduleName string) {
-	factoryData := fmt.Sprintf(
+func genUIKitRoutes(moduleName string) {
+	routes := fmt.Sprintf(
 		"import Foundation\n" +
-			"import RCKit\n\n" +
-			"protocol %sModuleRoutes: ModuleRoutes { \n\n"+
-			"" +
-			"} \n\n" +
-			"", moduleName)
+			"import RCKit\n" +
+			"\n" +
+			"protocol %sModuleRoutes: ModuleRoutes { \n"+
+			"\n" +
+			"} \n" +
+			"\n", moduleName)
 
-	writeFile(moduleName, "ModuleRoutes", factoryData)
+	writeFile(moduleName, "ModuleRoutes", routes)
 }
 
-func genFactory(moduleName string) {
-
+func genUIKitFactory(moduleName string) {
+	factory := fmt.Sprintf(
+		"import Foundation\n" +
+			"import RCKit\n" +
+			"\n" +
+			"protocol %sFactory {\n" +
+			"	func make() -> %sModuleRoutes\n" +
+			"}\n" +
+			"\n" +
+			"class Default%sFactory: BaseFactory, %sFactory {\n" +
+			"\n" +
+			"	func make() -> %sModuleRoutes { \n" +
+			"\n" +
+			"	}\n" +
+			"}" +
+			"", moduleName, moduleName, moduleName, moduleName, moduleName,
+	)
+	writeFile(moduleName, "Factory", factory)
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"SwiftModuleGenerator/swiftui"
 	"log"
 	"os"
 )
@@ -33,9 +34,9 @@ func main() {
 	}
 
 	if moduleType == SwiftUIModule {
-		swiftUIGen(moduleName)
+		swiftui.swiftUIGen(moduleName)
 	} else {
-		uiKitGen(moduleName)
+		genUIKitModule(moduleName)
 	}
 
 	log.Printf("Finished building module %s", moduleName)
