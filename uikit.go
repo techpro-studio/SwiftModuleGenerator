@@ -5,7 +5,10 @@ import "fmt"
 func genUIKitModule(moduleName string) {
 	genUIKitRoutes(moduleName)
 	genUIKitFactory(moduleName)
+	genUIKitController(moduleName)
+	genUIKitPresenter(moduleName)
 }
+
 
 func genUIKitRoutes(moduleName string) {
 	routes := fmt.Sprintf(
@@ -38,4 +41,28 @@ func genUIKitFactory(moduleName string) {
 			"", moduleName, moduleName, moduleName, moduleName, moduleName,
 	)
 	writeFile(moduleName, "Factory", factory)
+}
+
+func genUIKitController(moduleName string) {
+	viewController := fmt.Sprintf(
+		"import Foundation\n" +
+			"import UIKit\n" +
+			"\n" +
+			"\n" +
+			"class %sViewController: UIViewController, %sModuleRoutes {\n" +
+			"	private let presenter: %sPresenter\n" +
+			"\n" +
+			"	init(presenter: %sPresenter) {\n" +
+			"		self.presenter = presenter\n" +
+			"	}\n" +
+			"|n" +
+			"}" +
+			"", moduleName, moduleName, moduleName, moduleName,
+	)
+	writeFile(moduleName, "ViewController", viewController)
+}
+
+func genUIKitPresenter(moduleName string) {
+	presenter := fmt.Sprintf("")
+	writeFile(moduleName, "Presenter", presenter)
 }
