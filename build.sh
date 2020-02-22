@@ -1,4 +1,5 @@
-go build main.go
-mv main swiftuigen
-mv swiftuigen /usr/local/bin/swiftuigen
+# shellcheck disable=SC2035
+go build *.go
+mv main swiftmodulegen
+mv swiftmodulegen /usr/local/bin/swiftmodulegen
 echo "finished"

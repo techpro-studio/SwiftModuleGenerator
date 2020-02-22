@@ -1,3 +1,3 @@
-module SwiftUIViewModuleGenerator
+module SwiftModuleGenerator
 
 go 1.13
