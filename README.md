@@ -1,5 +1,5 @@
-# iOSModuleGenerator
-IOS app Module Generator according to architectures we use
+# SwiftModuleGenerator
+Swift Apple app Module Generator according to architectures we use
 
 swiftui https://github.com/techpro-studio/SwiftUIAppArchitecture
 
@@ -12,6 +12,6 @@ After be sure that /usr/local/bin has been added to bash PATH.
 So, now you can use it by calling 
 
 ```bash
-iosmodulegen <swiftui | uikit> <ModuleName>
+swiftmodulegen <swiftui | uikit> <ModuleName>
 ```
 
