@@ -18,7 +18,7 @@ func genUIKitRoutes(moduleName string) {
 			"protocol %sModuleRoutes: ModuleRoutes { \n"+
 			"\n" +
 			"} \n" +
-			"\n", moduleName)
+			"", moduleName)
 
 	writeFile(moduleName, "ModuleRoutes", routes)
 }
@@ -35,7 +35,7 @@ func genUIKitFactory(moduleName string) {
 			"class Default%sFactory: BaseFactory, %sFactory {\n" +
 			"\n" +
 			"	func make() -> %sModuleRoutes { \n" +
-			"\n" +
+			"		fatalError(\"implement me\")\n" +
 			"	}\n" +
 			"}" +
 			"", moduleName, moduleName, moduleName, moduleName, moduleName,
@@ -48,21 +48,28 @@ func genUIKitController(moduleName string) {
 		"import Foundation\n" +
 			"import UIKit\n" +
 			"\n" +
-			"\n" +
 			"class %sViewController: UIViewController, %sModuleRoutes {\n" +
-			"	private let presenter: %sPresenter\n" +
-			"\n" +
-			"	init(presenter: %sPresenter) {\n" +
-			"		self.presenter = presenter\n" +
-			"	}\n" +
-			"|n" +
+			"	var presenter: %sPresenter!\n" +
 			"}" +
-			"", moduleName, moduleName, moduleName, moduleName,
+			"", moduleName, moduleName, moduleName,
 	)
 	writeFile(moduleName, "ViewController", viewController)
 }
 
 func genUIKitPresenter(moduleName string) {
-	presenter := fmt.Sprintf("")
+	presenter := fmt.Sprintf(
+		"import Foundation \n" +
+			"import RCKit\n" +
+			"import RxSwift\n" +
+			"\n" +
+			"protocol %sPresenter {\n" +
+			"\n" +
+			"}\n" +
+			"\n" +
+			"class Default%sPresenter: %sPresenter {\n" +
+			"\n" +
+			"}\n" +
+			"", moduleName, moduleName, moduleName,
+	)
 	writeFile(moduleName, "Presenter", presenter)
 }

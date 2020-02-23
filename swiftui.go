@@ -35,7 +35,7 @@ func genSwiftUIView(mainImport string, moduleName string) {
 			"\n"+
 			"struct %sView_Previews: PreviewProvider {\n"+
 			"    static var previews: some View {\n"+
-			"\n"+
+			"	fatalError(\"implement me if need\")\n"+
 			"	 }\n"+
 			"}"+
 			"", moduleName, moduleName, moduleName, moduleName)

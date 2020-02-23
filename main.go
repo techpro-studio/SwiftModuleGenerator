@@ -1,7 +1,6 @@
 package main
 
 import (
-	"SwiftModuleGenerator/swiftui"
 	"log"
 	"os"
 )
@@ -34,7 +33,7 @@ func main() {
 	}
 
 	if moduleType == SwiftUIModule {
-		swiftui.swiftUIGen(moduleName)
+		genSwiftUIModule(moduleName)
 	} else {
 		genUIKitModule(moduleName)
 	}
