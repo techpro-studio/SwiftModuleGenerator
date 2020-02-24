@@ -35,10 +35,12 @@ func genUIKitFactory(moduleName string) {
 			"class Default%sFactory: BaseFactory, %sFactory {\n" +
 			"\n" +
 			"	func make() -> %sModuleRoutes { \n" +
-			"		fatalError(\"implement me\")\n" +
+			"		let viewController = %sViewController()\n" +
+			"		viewController.presenter = Default%sPresenter()\n" +
+			"		return viewController\n" +
 			"	}\n" +
 			"}" +
-			"", moduleName, moduleName, moduleName, moduleName, moduleName,
+			"", moduleName, moduleName, moduleName, moduleName, moduleName, moduleName, moduleName,
 	)
 	writeFile(moduleName, "Factory", factory)
 }
